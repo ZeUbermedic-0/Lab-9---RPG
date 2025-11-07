@@ -19,6 +19,14 @@ int main()
     cout << "5. for Sammy Student" << endl;
     cin >> selection;
 
+    cout << R"(
+      ___|   _ \   \     _ \__ __|  \     \  | \ \        / \     _ \   _ \ _ _|  _ \   _ \  
+    \___ \  |   | _ \   |   |  |   _ \     \ |  \ \  \   / _ \   |   | |   |  |  |   | |   | 
+          | ___/ ___ \  __ <   |  ___ \  |\  |   \ \  \ / ___ \  __ <  __ <   |  |   | __ <  
+    _____/ _|  _/    _\_| \_\ _|_/    _\_| \_|    \_/\_/_/    _\_| \_\_| \_\___|\___/ _| \_\ 
+                                                                                                 
+    )" << endl;
+    
     switch (selection)
     {
     case 1:
@@ -50,7 +58,7 @@ int main()
         strcpy_s(msg, "Welcome ");
         strcat_s(msg, role);
         cout << msg << endl;
-        cout << "WBe hope your role wil be successful!\n";
+        cout << "We hope your role wil be successful!\n";
         cout << "You have ... 50% health" << endl;	
         health += 50;
         break;
