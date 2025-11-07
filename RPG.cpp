@@ -1,4 +1,4 @@
-// Program to demonstrate an RPG * written by Group 3
+//Group 3 Programmers
 #include <iostream>
 #include <cstring>
 using namespace std;
@@ -8,7 +8,6 @@ int main()
     int health = 0;
     char role[100];
     char msg[100];
-
 
     cout << "[ Welcome to the World of the Incursion! ]" << endl;
     cout << "Please select a role";
@@ -46,7 +45,6 @@ int main()
     }
         
     case 3:
-
     {
         strcpy_s(role, "Spartan Warrior");
         strcpy_s(msg, "Welcome ");
@@ -56,8 +54,7 @@ int main()
         cout << "You have ... 50% health" << endl;	
         health += 50;
         break;
-    }
-        
+    }    
     case 4:
     {
         strcpy_s(role, "Messenger of Incursion");
@@ -69,8 +66,6 @@ int main()
         health += 25;
         break;
     }
-    
-    
     case 5:
     {
         strcpy_s(role, "Sammy Student");
@@ -78,7 +73,7 @@ int main()
         strcat_s(msg, role);
         cout << msg << endl;
         cout << "We hope your role wil be successful!\n";
-        cout << "Sorry you have ... 0% health" << endl;	
+        cout << "Sorry you have ... 0% health" << endl;
         health += 0;
         break;
     }
@@ -86,7 +81,7 @@ int main()
         cout << "Invalid entry ... try again later" << endl;
     }
     
-    // part 2 ... choosing a mission
+    //PART 2 ... choosing a mission
     cout << "please select an objective";
     cout << "\n choose ... " << endl;
     cout << "1 for \"Get the Gold\"" << endl;
@@ -96,6 +91,7 @@ int main()
     cout << "5 for \"Battle for Midland\"" << endl;
     cin >> selection;
     int treasure = 0;
+
     switch (selection) {
     case 1: 
     {
@@ -151,6 +147,92 @@ int main()
     cout << "Health: " << health << "%" << endl;
     cout << "Treasure: " << treasure << endl;
 
-       
+    //PART 3 ... the Game Play
+    // variable to remember that the mission is ongoing
+    bool active = true;
+    // variable for keyboard action
+    char motion = ' ';
+
+    //Game play keys defined
+    cout << "Let the action begin!" << endl << endl;
+    cout << "Use these keyboard keys for game play." << endl;
+    cout << endl;
+    cout << "press w for forward and then press Enter" << endl;
+    cout << "press s for backward and then press Enter" << endl;
+    cout << "press a for left and then press Enter" << endl;
+    cout << "press d for right and then press Enter" << endl;
+
+    while (active == true)
+    {
+        //open loop block	
+        //commence game play		
+        cout << endl;
+        cout << "enter the building (w) or" << endl;
+        cout << "bypass building and enter the alley (a or d)" << endl;
+        cout << endl;
+        cin >> motion;
+
+        // update game points
+        if (motion == 'w' || motion == 'W')
+            treasure += 20;
+        else
+            treasure += 5;
+
+        // display current game points
+        cout << "your treasure score : " << treasure << endl;
+        cout << "your health : " << health << endl;
+
+        // continue game play
+        cout << endl;
+        cout << "enter into forest (w) or" << endl;
+        cout << "bypass forest and walk to the river (a or d)" << endl;
+        cout << endl;
+        cin >> motion;
+
+            // assess character motion
+            if (motion == 'w' || motion == 'W')
+            {
+                cout << "you have encountered your nemesis!" << endl;
+                treasure -= 10;
+                health -= 10;
+            }
+            else if (motion == 'a' || motion == 'A')
+            {
+                treasure += 20;
+                cout << "you have retrieved the goblet of gold!" << endl;
+                health += 10;
+            }
+            else if (motion == 'd' || motion == 'D')
+            {
+                treasure += 5;
+                cout << "your nemesis has defeated you!" << endl;
+                health = 0;
+            }
+            else if (motion == 's' || motion == 'S')
+            {
+                treasure += 10;
+                cout << "you have retrieved the ring of silver!" << endl;
+                health += 5;
+            }
+            else
+            {
+                treasure += 0;
+                health += 0;
+            }
+
+        //Display current game points
+        cout << "your treasure score : " << treasure << endl;
+        cout << "your health : " << health << endl;
+
+        //Game play ends
+        if (health <= 0)
+            active = false;
+        else
+            cout << "continue completion of your mission!" << endl;
+    }
+    // close loop block
+    cout << endl;
+    cout << "the game is over ... " << "time for homework!" << endl;
+
     return 0;
 }
